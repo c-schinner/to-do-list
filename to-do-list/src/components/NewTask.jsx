@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const NewTask = ({ onSubmit }) => {
-
     const [task, setTask] = useState("");
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -11,30 +9,32 @@ const NewTask = ({ onSubmit }) => {
 
         onSubmit(task);
 
-        setTask("")
+        setTask("");
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-slate-700 p-6">
-            <div className="flex flex-col items-center justify-center h-full gap-4">
-                <label 
-                htmlFor="item"  
-                className="text-white text-4xl m-2">
-                    New Item
+        <form
+            onSubmit={handleSubmit}
+            className="w-full max-w-xl bg-slate-700 p-6 rounded-xl shadow-md"
+        >
+            <div className="flex flex-col gap-4">
+                <label htmlFor="item" className="text-xl font-semibold">
+                    Add New Task
                 </label>
-                <input 
-                type="text"
-                id="item"
-                value={task} 
-                onChange={(e) => setTask(e.target.value)}
-                className="bg-slate-300 text-gray-700 text-2xl p-2 max-w-[1800px] rounded-md focus:outline-none hover:bg-white m-2"/>
-                <button 
-                className="bg-blue-400 max-w-[1200px] text-2xl p-2 m-2 rounded-md border-transparent hover:text-blue-400 hover:bg-slate-600 hover:border-blue-500">
-                    Add
+                <input
+                    type="text"
+                    id="item"
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
+                    className="bg-white text-gray-800 text-lg p-3 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    placeholder="e.g. Finish homework"
+                />
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md transition-colors">
+                    Add Task
                 </button>
-                </div>
+            </div>
         </form>
- );
+    );
 };
 
 export default NewTask;
